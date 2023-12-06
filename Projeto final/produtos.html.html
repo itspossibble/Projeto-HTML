@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <title>Produtos</title>
+        <link href="" rel="">
+    </head>
+<body>
+        <h1>
+            Nossos Produtos
+        </h1>
+        <div class="Menu">
+            <ul>
+                <li><a href="Inicial.html">Página Inicial</a></li>
+                <li><a href="Produtos.html">Produtos</a></li>
+                <li><a href="Sobre.html">Sobre Nós</a></li>
+            </ul>
+        </div>
+
+        <h3>Filtro</h3>
+
+        <label for="filtro">Filtrar por material:</label>
+        <select id="filtro" onchange="filtrarProdutos()">
+          <option value="todos">Todos</option>
+          <option value="semi-joias">Semi-Joias</option>
+          <option value="prata">Prata</option>
+        </select>
+      
+        <div id="produtos">
+          <div class="produto" data-material="semi-joias">
+            <input type="checkbox" class="selecionar-produto"> Colar
+        </div>
+        <div class="produto" data-material="semi-joias">    
+            <input type="checkbox" class="selecionar-produto"> Pulseira
+        </div>
+        <div class="produto" data-material="prata">
+            <input type="checkbox" class="selecionar-produto"> Colar
+        </div>
+        <div class="produto" data-material="prata">
+            <input type="checkbox" class="selecionar-produto"> Pulseira
+        </div>
+        
+        <script>
+          function filtrarProdutos() {
+            var filtro = document.getElementById("filtro").value;
+            var produtos = document.getElementsByClassName("produto");
+      
+            for (var i = 0; i < produtos.length; i++) {
+              var produto = produtos[i];
+              var material = produto.getAttribute("data-material");
+      
+              if (filtro === "todos" || material === filtro) {
+                produto.style.display = "block";
+              } else {
+                produto.style.display = "none";
+              }
+            }
+          }
+      
+          function selecionarTodos() {
+            var checkboxes = document.getElementsByClassName("selecionar-produto");
+      
+            for (var i = 0; i < checkboxes.length; i++) {
+              checkboxes[i].checked = true;
+            }
+          }
+      
+          function desfazerTodos() {
+            var checkboxes = document.getElementsByClassName("selecionar-produto");
+      
+            for (var i = 0; i < checkboxes.length; i++) {
+              checkboxes[i].checked = false;
+            }
+          }
+        </script>
+      
+        <button onclick="selecionarTodos()">Selecionar Todos</button>
+        <button onclick="deselecionarTodos()">Desfazer Todos</button>
+
+
+
+        <div class="contato">
+          <h2>
+              Contato
+          </h2>
+          <p>Entre em contato conosco para obter mais informações ou fazer um pedido.</p>
+              <address>
+                  Email: <a href="alencarsemijoias">contato@alencarsemijoias.com</a><br>
+                  Telefone: +55 71 99999999 <br>
+                  Instagram: @alencarsemijoias
+              </address>
+          </div>
+
+</body>
+</html>
